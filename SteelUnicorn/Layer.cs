@@ -1,4 +1,5 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Application = Autodesk.AutoCAD.ApplicationServices.Core.Application;
@@ -45,9 +46,15 @@ namespace SteelUnicorn
             return database.Clayer;
         }
 
-        public void CreateLayer()
+        public LayerTableRecord CreateLayer(string name, Color color, LineWeight weight, ObjectId linetype) //TODO temporary
         {
-            
+            LayerTableRecord layer = new LayerTableRecord
+            {
+                Name = name,
+                Color = color,
+                LineWeight = weight, LinetypeObjectId = linetype
+            };
+            return layer;
         }
     }
 }
